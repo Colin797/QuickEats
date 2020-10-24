@@ -1,26 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
-import Vsm from './vsm'
+import VsmEPI from './vsm'
+//import VsmAR from './vsm1'
 
 function App() {
-  
+
+  var list = ["red apple","green apple"]
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Vsm />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <VsmEPI query={list}/>
       </header>
     </div>
   );
