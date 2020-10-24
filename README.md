@@ -12,7 +12,7 @@
 
 5. Open http://localhost:3000 to view it in the browser.
 
-## Core Algorithm ##
+## Core Algorithm (View vsm.js) ##
 
 We implemented the VSM ranking algorithm located in vsm.js.
 Currently the user query is located in vsm.js on line 10 as "userQuery".
