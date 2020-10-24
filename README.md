@@ -15,7 +15,7 @@
 ## Core Algorithm ##
 
 We implemented the VSM ranking algorithm located in vsm.js.
-Currently the user query is located in vsm.js on line 10 as "userQuery"
+Currently the user query is located in vsm.js on line 10 as "userQuery".
 The userQuery is an array of strings, modify this to change the query.
 
 Note: We will provide 3 sample queries
