@@ -7,7 +7,9 @@ function Vsm(props) {
   var json = require('./data/recipes_raw_nosource_epi.json')
   var json1 = require('./data/recipes_raw_nosource_ar.json')
 
-  var userQuery = ["onions","pepper","butter"]
+  var userQuery = ["salmon","tomato","lemon","garlic","butter"]
+  //var userQuery = ["onions","pepper","butter"]
+  //var userQuery = ["chicken","mustard","pepper","onions","potato"]
   var scoreMap = new Map()
   var timeMap = new Map()
   var instructions
@@ -122,7 +124,7 @@ for (const [key, value] of Object.entries(json1)) {
               }
             }
 
-            score -= ( value.ingredients.length - score ) * .5
+            score -= ( value.ingredients.length - 1 - score ) * .5
 
             if ( time != 0 && !isNaN(time) ) {
               score += (eval(1/time))
