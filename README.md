@@ -1,6 +1,6 @@
 # QuickEats
 
-## MAKE SURE YOU HAVE Node >= 8.10 and npm >= 5.6 on your machine ##
+## Make sure you have Node >= 8.10 and npm >= 5.6 on your machine ##
 
 1. Run "git clone https://github.com/Colin797/QuickEats.git" to clone the repo
 
