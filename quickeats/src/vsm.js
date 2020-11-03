@@ -1,12 +1,16 @@
 //import logo from './logo.svg';
 //import './App.css';
-
+import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
 import React from "react";
 
 function Vsm(props) {
+  
   var json = require('./data/recipes_raw_nosource_epi.json')
   var json1 = require('./data/recipes_raw_nosource_ar.json')
 
+  //var userQuery = props.query;
+  console.log("vsm")
   var userQuery = ["salmon","tomato","lemon","garlic","butter"]
   //var userQuery = ["onions","pepper","butter"]
   //var userQuery = ["chicken","mustard","pepper","onions","potato"]
@@ -76,7 +80,7 @@ function Vsm(props) {
   }
 
 
-for (const [key, value] of Object.entries(json1)) {
+/*for (const [key, value] of Object.entries(json1)) {
     let score = 0
       //for ar
       //length_in.push(value.ingredients.length-1)
@@ -133,21 +137,38 @@ for (const [key, value] of Object.entries(json1)) {
             }
     } catch (error) {
     }
-  }
+  }*/
 
   var keyList = []
   var scoreList = []
   var timeList = []
   var titleList = []
+  var ingredientsList = [];
+  var instructionsList= []
+
   var x
   for (let i = 0; i < 10; i++) {
     x = ([...scoreMap.entries()].reduce((a, e ) => e[1] > a[1] ? e : a))
     var time = timeMap.get(x[0])
 
     try {
+      const tagsIds = [];
+      for (let i = 0; i < json[x[0]].ingredients.length; i++) {
+        const temp = json[x[0]].ingredients[i].toString()
+        tagsIds.push(<div style={{ padding: '2px' }} key={i}> {temp} </div>)
+      }
+      ingredientsList.push(tagsIds)
+      instructionsList.push(json[x[0]].instructions)
       titleList.push(json[x[0]].title)
     } catch (error) {}
     try {
+      const tagsIds = [];
+      for (let i = 0; i < json1[x[0]].ingredients.length; i++) {
+        const temp = json1[x[0]].ingredients[i].toString()
+        tagsIds.push(<div style={{ padding: '2px' }} key={i}> {temp} </div>)
+      }
+      ingredientsList.push(tagsIds)
+      instructionsList.push(json1[x[0]].instructions)
       titleList.push(json1[x[0]].title)
     } catch (error) {}
 
@@ -159,27 +180,30 @@ for (const [key, value] of Object.entries(json1)) {
     scoreMap.delete(x[0])
   }
 
-  
-
-
   return (
-    <div> 
-      <div> Rank 1 </div>
-      <div> Recipe Title: {titleList[0]} </div>
-      <div> key: {keyList[0]} </div>
-      <div> score: {scoreList[0]} </div>
-      <div> time in minutes: {timeList[0]} </div>
-      <div> Rank 2 </div>
-      <div> Recipe Title: {titleList[1]} </div>
-      <div> key: {keyList[1]} </div>
-      <div> score: {scoreList[1]} </div>
-      <div> time in minutes: {timeList[1]} </div>
-      <div> Rank 3 </div>
-      <div> Recipe Title: {titleList[2]} </div>
-      <div> key: {keyList[2]} </div>
-      <div> score: {scoreList[2]} </div>
-      <div> time in minutes: {timeList[2]} </div>
-    </div>
+
+    <Typography style={{color:"black", margin:"50px"}}>
+      <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
+        <h1 style={{fontSize:"25px"}}> Recipe Title: {titleList[0]} </h1>
+        <div style={{paddingBottom:"10px"}}> <h2>Ingredients:</h2> { ingredientsList[0] }  </div>
+        <div style={{paddingBottom:"10px"}}> <h2>Time to Prepare:</h2> {timeList[0]} minutes</div>
+        <div style={{paddingBottom:"10px"}}> <h2>Instructions:</h2> {instructionsList[0]}</div>
+      </Card>
+      
+      <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
+        <h1 style={{fontSize:"25px"}}> Recipe Title: {titleList[1]} </h1>
+        <div style={{paddingBottom:"10px"}}> <h2>Ingredients:</h2> {ingredientsList[1]} </div>
+        <div style={{paddingBottom:"10px"}}> <h2>Time to Prepare:</h2> {timeList[1]} minutes</div>
+        <div style={{paddingBottom:"10px"}}> <h2>Instructions:</h2> {instructionsList[1]}</div>
+      </Card>
+
+      <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
+        <h1 style={{fontSize:"25px"}}> Recipe Title: {titleList[2]} </h1>
+        <div style={{paddingBottom:"10px"}}> <h2>Ingredients:</h2> {ingredientsList[2]} </div>
+        <div style={{paddingBottom:"10px"}}> <h2>Time to Prepare:</h2> {timeList[2]} minutes</div>
+        <div style={{paddingBottom:"10px"}}> <h2>Instructions:</h2> {instructionsList[2]}</div>
+      </Card>
+      </Typography>
     //<div> {props.query} </div>
   );
 }
