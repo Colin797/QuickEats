@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/QuickEats/static/css/main.163ec195.chunk.css",
+    "main.js": "/QuickEats/static/js/main.7cd66347.chunk.js",
+    "main.js.map": "/QuickEats/static/js/main.7cd66347.chunk.js.map",
+    "runtime-main.js": "/QuickEats/static/js/runtime-main.fe6e0b29.js",
+    "runtime-main.js.map": "/QuickEats/static/js/runtime-main.fe6e0b29.js.map",
+    "static/js/2.7023d479.chunk.js": "/QuickEats/static/js/2.7023d479.chunk.js",
+    "static/js/2.7023d479.chunk.js.map": "/QuickEats/static/js/2.7023d479.chunk.js.map",
+    "static/js/3.ee806a4a.chunk.js": "/QuickEats/static/js/3.ee806a4a.chunk.js",
+    "static/js/3.ee806a4a.chunk.js.map": "/QuickEats/static/js/3.ee806a4a.chunk.js.map",
+    "index.html": "/QuickEats/index.html",
+    "static/css/main.163ec195.chunk.css.map": "/QuickEats/static/css/main.163ec195.chunk.css.map",
+    "static/js/2.7023d479.chunk.js.LICENSE.txt": "/QuickEats/static/js/2.7023d479.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fe6e0b29.js",
+    "static/js/2.7023d479.chunk.js",
+    "static/css/main.163ec195.chunk.css",
+    "static/js/main.7cd66347.chunk.js"
+  ]
+}
