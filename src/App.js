@@ -30,6 +30,7 @@ function App() {
 
   const onAdd = (e) => {
   	e.preventDefault();
+    document.getElementById('outlined-basic').value = ''
     if (item != "") {
       list.push(item)
       item = ""

@@ -259,7 +259,7 @@ function Vsm(props) {
         <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
           <h1 style={{fontSize:"25px"}}> Recipe Title: {titleList[0]} </h1>
           <div style={{paddingBottom:"10px"}}> <h2>Ingredients:</h2> { ingredientsList[0] }  </div>
-          <div style={{paddingBottom:"10px"}}> <h2>Time to Prepare:</h2> {timeList[0]} minutes</div>
+          <div style={{paddingBottom:"10px"}}> <h2>Estimated Time to Prepare:</h2> {timeList[0]} minutes</div>
           <div style={{paddingBottom:"10px"}}> <h2>Instructions:</h2> {instructionsList[0]}</div>
         </Card>
       </Typography>
@@ -273,14 +273,14 @@ function Vsm(props) {
         <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
           <h1 style={{fontSize:"25px"}}> Recipe Title: {titleList[0]} </h1>
           <div style={{paddingBottom:"10px"}}> <h2>Ingredients:</h2> { ingredientsList[0] }  </div>
-          <div style={{paddingBottom:"10px"}}> <h2>Time to Prepare:</h2> {timeList[0]} minutes</div>
+          <div style={{paddingBottom:"10px"}}> <h2>Estimated Time to Prepare:</h2> {timeList[0]} minutes</div>
           <div style={{paddingBottom:"10px"}}> <h2>Instructions:</h2> {instructionsList[0]}</div>
         </Card>
       
         <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
           <h1 style={{fontSize:"25px"}}> Recipe Title: {titleList[1]} </h1>
           <div style={{paddingBottom:"10px"}}> <h2>Ingredients:</h2> {ingredientsList[1]} </div>
-          <div style={{paddingBottom:"10px"}}> <h2>Time to Prepare:</h2> {timeList[1]} minutes</div>
+          <div style={{paddingBottom:"10px"}}> <h2>Estimated Time to Prepare:</h2> {timeList[1]} minutes</div>
           <div style={{paddingBottom:"10px"}}> <h2>Instructions:</h2> {instructionsList[1]}</div>
         </Card>
       </Typography>
