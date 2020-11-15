@@ -60,6 +60,41 @@ function dupRemover(instr){
   
 }
 
+function dupRemover2(instr){
+  instr = instr.replace(/\n/g, " ")
+  var words = instr.split(" ")
+  console.log(words)
+  var dupStart = -1
+  var duplicates = false
+  for(let i = 6; i < words.length; i++){
+    if(words[i] === words[1]){
+      if((i + 5) < words.length){
+        let count = 2
+        for(let j = i+1; j < i + 5; j++){
+          if(words[j] != words[count]){
+            break
+          }
+          count += 1
+        }
+        if(count === 6){
+          dupStart = i - 1
+          duplicates = true
+        }
+      }
+    }
+  }
+  
+  //rebuild instruction string without duplicates
+  if(duplicates === false){
+    return false
+  }
+  else {
+    return true
+  }
+  
+  
+}
+
 function Vsm(props) {
   //console.log(dupRemover("this is a duplicate string remover test. this is a duplicate string remover test"))
   var json = require('./data/recipes_raw_nosource_epi.json')
@@ -254,6 +289,9 @@ function Vsm(props) {
   }
   else if(numResults == 1){
     instructionsList[0] = dupRemover(instructionsList[0])
+    if (dupRemover2(instructionsList[0]) == true) {
+      timeList[0] /= 2;
+    }
     return (
       <Typography style={{color:"black", margin:"50px"}}>
         <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
@@ -268,6 +306,12 @@ function Vsm(props) {
   else if(numResults == 2){
     instructionsList[0] = dupRemover(instructionsList[0])
     instructionsList[1] = dupRemover(instructionsList[1])
+    if (dupRemover2(instructionsList[0]) == true) {
+      timeList[0] /= 2;
+    }
+    if (dupRemover2(instructionsList[1]) == true) {
+      timeList[1] /= 2;
+    }
     return (
       <Typography style={{color:"black", margin:"50px"}}>
         <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
@@ -290,6 +334,15 @@ function Vsm(props) {
     instructionsList[0] = dupRemover(instructionsList[0])
     instructionsList[1] = dupRemover(instructionsList[1])
     instructionsList[2] = dupRemover(instructionsList[2])
+    if (dupRemover2(instructionsList[0]) == true) {
+      timeList[0] /= 2;
+    }
+    if (dupRemover2(instructionsList[1]) == true) {
+      timeList[1] /= 2;
+    }
+    if (dupRemover2(instructionsList[2]) == true) {
+      timeList[2] /= 2;
+    }
     return (
     <Typography style={{color:"black", margin:"50px"}}>
       <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
