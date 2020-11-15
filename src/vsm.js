@@ -65,14 +65,10 @@ function Vsm(props) {
   var json = require('./data/recipes_raw_nosource_epi.json')
   var json1 = require('./data/recipes_raw_nosource_ar.json')
 
-<<<<<<< HEAD:quickeats/src/vsm.js
   //var userQuery = props.query;
-  var userQuery = ["salmon", "garlic"]
-=======
   var userQuery = props.query;
   console.log("vsm")
   //var userQuery = ["chicken"]
->>>>>>> 45dcf4cc98e421d5f3939a280feb588211c5967b:src/vsm.js
   //var userQuery = ["onions","pepper","butter"]
   //var userQuery = ["chicken","mustard","pepper","onions","potato"]
   var scoreMap = new Map()
