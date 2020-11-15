@@ -20,14 +20,59 @@ function match(a,b){
   
 }
 
-function Vsm(props) {
+function dupRemover(instr){
+  instr = instr.replace(/\n/g, " ")
+  var words = instr.split(" ")
+  console.log(words)
+  var dupStart = -1
+  var duplicates = false
+  for(let i = 6; i < words.length; i++){
+    if(words[i] === words[1]){
+      if((i + 5) < words.length){
+        let count = 2
+        for(let j = i+1; j < i + 5; j++){
+          if(words[j] != words[count]){
+            break
+          }
+          count += 1
+        }
+        if(count === 6){
+          dupStart = i - 1
+          duplicates = true
+        }
+      }
+    }
+  }
   
+  //rebuild instruction string without duplicates
+  if(duplicates === false){
+    return instr
+  }
+  else{
+    var noDup = ""
+    for(let i = 0; i < dupStart-1; i++){
+     noDup = noDup + words[i] + " "
+    }
+    noDup = noDup + words[dupStart-1]
+    return noDup
+  }
+  
+  
+}
+
+function Vsm(props) {
+  //console.log(dupRemover("this is a duplicate string remover test. this is a duplicate string remover test"))
   var json = require('./data/recipes_raw_nosource_epi.json')
   var json1 = require('./data/recipes_raw_nosource_ar.json')
 
+<<<<<<< HEAD:quickeats/src/vsm.js
+  //var userQuery = props.query;
+  var userQuery = ["salmon", "garlic"]
+=======
   var userQuery = props.query;
   console.log("vsm")
   //var userQuery = ["chicken"]
+>>>>>>> 45dcf4cc98e421d5f3939a280feb588211c5967b:src/vsm.js
   //var userQuery = ["onions","pepper","butter"]
   //var userQuery = ["chicken","mustard","pepper","onions","potato"]
   var scoreMap = new Map()
@@ -200,7 +245,7 @@ function Vsm(props) {
 
     scoreMap.delete(x[0])
   }
-
+  console.log(dupRemover(instructionsList[2]))
   if(numResults == 0){
     return (
       <Typography style={{color:"black", margin:"50px"}}>
@@ -212,6 +257,7 @@ function Vsm(props) {
       );
   }
   else if(numResults == 1){
+    instructionsList[0] = dupRemover(instructionsList[0])
     return (
       <Typography style={{color:"black", margin:"50px"}}>
         <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
@@ -224,6 +270,8 @@ function Vsm(props) {
       );
   }
   else if(numResults == 2){
+    instructionsList[0] = dupRemover(instructionsList[0])
+    instructionsList[1] = dupRemover(instructionsList[1])
     return (
       <Typography style={{color:"black", margin:"50px"}}>
         <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
@@ -243,6 +291,9 @@ function Vsm(props) {
       );
   }
   else{
+    instructionsList[0] = dupRemover(instructionsList[0])
+    instructionsList[1] = dupRemover(instructionsList[1])
+    instructionsList[2] = dupRemover(instructionsList[2])
     return (
     <Typography style={{color:"black", margin:"50px"}}>
       <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
