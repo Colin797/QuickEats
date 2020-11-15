@@ -23,7 +23,7 @@ function match(a,b){
 function dupRemover(instr){
   instr = instr.replace(/\n/g, " ")
   var words = instr.split(" ")
-  console.log(words)
+  //console.log(words)
   var dupStart = -1
   var duplicates = false
   for(let i = 6; i < words.length; i++){
@@ -63,7 +63,7 @@ function dupRemover(instr){
 function dupRemover2(instr){
   instr = instr.replace(/\n/g, " ")
   var words = instr.split(" ")
-  console.log(words)
+  //console.log(words)
   var dupStart = -1
   var duplicates = false
   for(let i = 6; i < words.length; i++){
@@ -102,7 +102,7 @@ function Vsm(props) {
 
   //var userQuery = props.query;
   var userQuery = props.query;
-  console.log("vsm")
+  //console.log("vsm")
   //var userQuery = ["chicken"]
   //var userQuery = ["onions","pepper","butter"]
   //var userQuery = ["chicken","mustard","pepper","onions","potato"]
@@ -276,7 +276,7 @@ function Vsm(props) {
 
     scoreMap.delete(x[0])
   }
-  console.log(dupRemover(instructionsList[2]))
+  //console.log(dupRemover(instructionsList[2]))
   if(numResults == 0){
     return (
       <Typography style={{color:"black", margin:"50px"}}>
@@ -288,10 +288,11 @@ function Vsm(props) {
       );
   }
   else if(numResults == 1){
-    instructionsList[0] = dupRemover(instructionsList[0])
-    if (dupRemover2(instructionsList[0]) == true) {
+    if (dupRemover2(instructionsList[0]) === true) {
       timeList[0] /= 2;
     }
+    instructionsList[0] = dupRemover(instructionsList[0])
+    
     return (
       <Typography style={{color:"black", margin:"50px"}}>
         <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
@@ -304,14 +305,16 @@ function Vsm(props) {
       );
   }
   else if(numResults == 2){
-    instructionsList[0] = dupRemover(instructionsList[0])
-    instructionsList[1] = dupRemover(instructionsList[1])
-    if (dupRemover2(instructionsList[0]) == true) {
-      timeList[0] /= 2;
-    }
-    if (dupRemover2(instructionsList[1]) == true) {
+    if (dupRemover2(instructionsList[1]) === true) {
       timeList[1] /= 2;
     }
+    if (dupRemover2(instructionsList[0]) === true) {
+      timeList[0] /= 2;
+    }
+    instructionsList[0] = dupRemover(instructionsList[0])
+    instructionsList[1] = dupRemover(instructionsList[1])
+    
+    
     return (
       <Typography style={{color:"black", margin:"50px"}}>
         <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
@@ -331,38 +334,40 @@ function Vsm(props) {
       );
   }
   else{
+    if (dupRemover2(instructionsList[0]) === true) {
+      timeList[0] /= 2;
+    }
+    if (dupRemover2(instructionsList[1]) === true) {
+      timeList[1] /= 2;
+    }
+    if (dupRemover2(instructionsList[2]) === true) {
+      timeList[2] /= 2;
+    }
+
     instructionsList[0] = dupRemover(instructionsList[0])
     instructionsList[1] = dupRemover(instructionsList[1])
     instructionsList[2] = dupRemover(instructionsList[2])
-    if (dupRemover2(instructionsList[0]) == true) {
-      timeList[0] /= 2;
-    }
-    if (dupRemover2(instructionsList[1]) == true) {
-      timeList[1] /= 2;
-    }
-    if (dupRemover2(instructionsList[2]) == true) {
-      timeList[2] /= 2;
-    }
+    
     return (
     <Typography style={{color:"black", margin:"50px"}}>
       <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
         <h1 style={{fontSize:"25px"}}> Recipe Title: {titleList[0]} </h1>
         <div style={{paddingBottom:"10px"}}> <h2>Ingredients:</h2> { ingredientsList[0] }  </div>
-        <div style={{paddingBottom:"10px"}}> <h2>Time to Prepare:</h2> {timeList[0]} minutes</div>
+        <div style={{paddingBottom:"10px"}}> <h2>Estimated Time to Prepare:</h2> {timeList[0]} minutes</div>
         <div style={{paddingBottom:"10px"}}> <h2>Instructions:</h2> {instructionsList[0]}</div>
       </Card>
       
       <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
         <h1 style={{fontSize:"25px"}}> Recipe Title: {titleList[1]} </h1>
         <div style={{paddingBottom:"10px"}}> <h2>Ingredients:</h2> {ingredientsList[1]} </div>
-        <div style={{paddingBottom:"10px"}}> <h2>Time to Prepare:</h2> {timeList[1]} minutes</div>
+        <div style={{paddingBottom:"10px"}}> <h2>Estimated Time to Prepare:</h2> {timeList[1]} minutes</div>
         <div style={{paddingBottom:"10px"}}> <h2>Instructions:</h2> {instructionsList[1]}</div>
       </Card>
 
       <Card style={{backgroundColor:"#3f51b5", color:"#fff", marginBottom:"20px"}}> 
         <h1 style={{fontSize:"25px"}}> Recipe Title: {titleList[2]} </h1>
         <div style={{paddingBottom:"10px"}}> <h2>Ingredients:</h2> {ingredientsList[2]} </div>
-        <div style={{paddingBottom:"10px"}}> <h2>Time to Prepare:</h2> {timeList[2]} minutes</div>
+        <div style={{paddingBottom:"10px"}}> <h2>Estimated Time to Prepare:</h2> {timeList[2]} minutes</div>
         <div style={{paddingBottom:"10px"}}> <h2>Instructions:</h2> {instructionsList[2]}</div>
       </Card>
       </Typography>
