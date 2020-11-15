@@ -25,9 +25,9 @@ function Vsm(props) {
   var json = require('./data/recipes_raw_nosource_epi.json')
   var json1 = require('./data/recipes_raw_nosource_ar.json')
 
-  //var userQuery = props.query;
+  var userQuery = props.query;
   console.log("vsm")
-  var userQuery = ["chicken"]
+  //var userQuery = ["chicken"]
   //var userQuery = ["onions","pepper","butter"]
   //var userQuery = ["chicken","mustard","pepper","onions","potato"]
   var scoreMap = new Map()
