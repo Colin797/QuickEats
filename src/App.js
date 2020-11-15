@@ -39,24 +39,11 @@ function App() {
   	
     displayList = []
     for (let i = 0; i < list.length; i++) {
-        displayList.push(<span style={{ padding: '2px'}} key={i}>{list[i]}</span>)
+        displayList.push(<div style={{ padding: '2px'}} key={i}>{list[i]}</div>)
     }
 
   }
 
-  const onDelete = (e) => {
-    e.preventDefault();
-    console.log(e.target.innerHTML)
-    displayList = []
-    for (let i = 0; i < list.length; i++) {
-      if (list[i] !== e.target.innerHTML) {
-        displayList.push(<span style={{ padding: '2px'}} key={i}> 
-        <Button variant="contained" disabled={recipes} color="primary" size="small" style={{marginLeft:"6px", padding:"0px", width:"50%"}} onClick={onDelete}>{list[i]}</Button>  
-         </span>)
-      }
-    }
-    console.log(displayList)
-  }
 
   const onClear = (e) => {
     console.log("here")
