@@ -16,7 +16,6 @@ var list = []
 var item = ""
 var displayList = [];
 var recipes = false;
-var bootLeg = false;
 function App() {
 
   const [query, setQuery] = useState("")
@@ -38,12 +37,25 @@ function App() {
       setQuery("")
     }
   	
-
     displayList = []
     for (let i = 0; i < list.length; i++) {
-        displayList.push(<div style={{ padding: '2px' }} key={i}> {list[i]} </div>)
+        displayList.push(<span style={{ padding: '2px'}} key={i}>{list[i]}</span>)
     }
 
+  }
+
+  const onDelete = (e) => {
+    e.preventDefault();
+    console.log(e.target.innerHTML)
+    displayList = []
+    for (let i = 0; i < list.length; i++) {
+      if (list[i] !== e.target.innerHTML) {
+        displayList.push(<span style={{ padding: '2px'}} key={i}> 
+        <Button variant="contained" disabled={recipes} color="primary" size="small" style={{marginLeft:"6px", padding:"0px", width:"50%"}} onClick={onDelete}>{list[i]}</Button>  
+         </span>)
+      }
+    }
+    console.log(displayList)
   }
 
   const onClear = (e) => {
@@ -69,10 +81,10 @@ function App() {
       <h1>Quick Eats</h1>
         <img src={logo} className="App-logo" alt="logo" />
         	<div>
-      		<TextField id="outlined-basic" label="Ingredient" variant="outlined" color="primary" onChange={onChange} size="small" style={{paddingTop:"4px"}}/>
-      		<Button variant="contained" color="primary" size="large" style={{marginLeft:"6px"}} onClick={onAdd}>Add</Button>
+      		<TextField id="outlined-basic" disabled={recipes} label="Ingredient" variant="outlined" color="primary" onChange={onChange} size="small" style={{paddingTop:"4px"}}/>
+      		<Button variant="contained" disabled={recipes} color="primary" size="large" style={{marginLeft:"6px"}} onClick={onAdd}>Add</Button>
       		<Button variant="contained" color="primary" size="large" style={{marginLeft:"6px"}} onClick={onClear}>Clear</Button>
-          <Button variant="contained" color="primary" size="large" style={{marginLeft:"6px"}} onClick={onSearch}>Search Recipes</Button>
+          <Button variant="contained" disabled={recipes} color="primary" size="large" style={{marginLeft:"6px"}} onClick={onSearch}>Search Recipes</Button>
           </div>
         	<div>Ingredient List:</div>
         	<Typography component={'span'} style={{color:"black"}}>
